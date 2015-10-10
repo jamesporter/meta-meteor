@@ -5,3 +5,5 @@ Meteor.subscribe("responses");
 Accounts.ui.config({
     passwordSignupFields: "USERNAME_ONLY"
 });
+
+Accounts.onLogin((e) => {FlowRouter.go("/"); } );
