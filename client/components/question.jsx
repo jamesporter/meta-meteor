@@ -13,12 +13,13 @@ Question = React.createClass({
         return this.props.topic.ownerId == this.props.user._id;
     },
     handleResponse(option){
+        console.log(option, this.props.question._id);
         //event.preventDefault();
         Meteor.call('addResponse', this.props.question._id, this.props.topic._id, option)
     },
     renderOptions(){
-        var i = 0;
         return this.props.question.options.map((opt, index) => {
+            console.log("renderOptions is called");
             return(
               <Button
                   key={index}

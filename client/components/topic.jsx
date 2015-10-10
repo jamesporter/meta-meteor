@@ -27,7 +27,7 @@ Topic = React.createClass({
                         question={question}
                         topic={this.data.topic}
                         user={this.data.user}
-                        response={this.findResponse}/>
+                        response={this.findResponse(question._id)}/>
                 )
             }
         );
