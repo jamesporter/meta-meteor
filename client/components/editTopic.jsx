@@ -1,8 +1,9 @@
-App = React.createClass({
+EditTopic = React.createClass({
     render(){
         return (
             <div className="container">
-                <h1>Test</h1>
+                <AccountsUIWrapper />
+                <h1>Add/edit topic</h1>
             </div>
         );
     }

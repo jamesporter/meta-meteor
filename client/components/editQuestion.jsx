@@ -1,9 +1,9 @@
-Login = React.createClass({
+EditQuestion = React.createClass({
     render(){
         return (
             <div className="container">
                 <AccountsUIWrapper />
-                <h1>Login page</h1>
+                <h1>Add/edit question</h1>
             </div>
         );
     }
