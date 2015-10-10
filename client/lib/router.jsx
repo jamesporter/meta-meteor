@@ -23,35 +23,35 @@ var loggedIn = FlowRouter.group({
 loggedIn.route('/', {
     action: function() {
         ReactLayout.render(Layout, {
-            content: <App/>
+            content: <Home/>
         });
     }
 });
 loggedIn.route('/topic', {
     action: function() {
         ReactLayout.render(Layout, {
-            content: <App/>
+            content: <EditTopic/>
         });
     }
 });
 loggedIn.route('/topic/:topicId', {
     action: function(params) {
         ReactLayout.render(Layout, {
-            content: <App {...params}/>
+            content: <Topic {...params}/>
         });
     }
 });
 loggedIn.route('/topic/:topicId/question', {
     action: function(params) {
         ReactLayout.render(Layout, {
-            content: <App {...params}/>
+            content: <EditQuestion {...params}/>
         });
     }
 });
 loggedIn.route('/topic/:topicId/question/:questionId', {
     action: function() {
         ReactLayout.render(Layout, {
-            content: <App {...params}/>
+            content: <EditQuestion {...params}/>
         });
     }
 });
