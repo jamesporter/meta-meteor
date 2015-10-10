@@ -24,7 +24,7 @@ EditQuestion = React.createClass({
     },
 
     isCreating() {
-        return _.isNull(this.data.questionId);
+        return !this.data.questionId;
     },
 
     handleCreateOrUpdate() {
