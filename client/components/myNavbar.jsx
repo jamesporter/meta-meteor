@@ -16,16 +16,9 @@ MyNavbar = React.createClass({
        };
      },
     render(){
-            console.log(this.data.currentUser);
-            return (
-                <Navbar brand={<a href="/">Meta</a>} inverse toggleNavKey={0}>
-                    { this.data.currentUser ?
-                        this.data.currentUser.username:
-                        'Link here'
-                    }
-
-                </Navbar>
-            )
-        }
+        return (
+            <Navbar brand={<a href="/">Meta</a>} inverse toggleNavKey={0}>
+                <LoginUIWrapper />
+            </Navbar>)
     }
-);
+});
