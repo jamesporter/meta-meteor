@@ -1,6 +1,7 @@
 const {
     Button,
-    ListGroup
+    ListGroup,
+    ButtonToolbar
     } = rbs;
 
 Topic = React.createClass({
@@ -31,13 +32,25 @@ Topic = React.createClass({
             }
         );
     },
-    render(){
+
+    renderAddQuestion() {
+        console.log(this.data.topic.ownerId, Meteor.userId(), this.data.topic.ownerId == Meteor.userId())
+        if (this.data.topic.ownerId == Meteor.userId()) {
+            return (
+                <ButtonToolbar>
+                    <Button bsStyle="primary" href={"/topic/" + this.props.topicId + "/question"}>Add question</Button>
+                </ButtonToolbar>
+            )
+        }
+    },
+
+    render() {
         return (
             <div className="container">
                 <div className="row">
                     <div className="col-xs-12">
-                        <h1>List of questions for a particular topic</h1>
-                        <Button bsStyle="primary" href={"/topic/" + this.props.topicId + "/question"}>Add question</Button>
+                        <h1>{this.data.topic.title}</h1> 
+                        { this.renderAddQuestion() }
                         <ListGroup>
                             {this.renderQuestions()}
                         </ListGroup>
