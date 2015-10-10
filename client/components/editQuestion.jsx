@@ -57,14 +57,14 @@ EditQuestion = React.createClass({
                     <Input
                         type="text"
                         ref="text"
-                        placeholder={"Type to add question text"}
+                        placeholder="Type to add question text"
                         value={question.questionText}
                         />
                     <Input
                         type="textarea"
                         ref="options"
-                        placeholder={"Type the different options on a new line"}
-                        value={options}
+                        placeholder="Type the different options on a new line"
+                        defaultValue={options}
                         />
                     <ButtonInput
                         type="submit"
