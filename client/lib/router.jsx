@@ -27,13 +27,6 @@ loggedIn.route('/', {
         });
     }
 });
-loggedIn.route('/topic', {
-    action: function() {
-        ReactLayout.render(Layout, {
-            content: <EditTopic/>
-        });
-    }
-});
 loggedIn.route('/topic/:topicId', {
     action: function(params) {
         ReactLayout.render(Layout, {
