@@ -30,13 +30,14 @@ EditQuestion = React.createClass({
     handleCreateOrUpdate() {
         event.preventDefault();
         var text = this.refs.text.getInputDOMNode().value.trim();
+        var points = this.refs.points.getInputDOMNode().value.trim();
         var options = this.refs.options.getInputDOMNode().value.trim();
         var questionId = this.data.questionId;
 
         if(questionId){
-            Meteor.call('updateQuestion', text, options, questionId, this.insertUpdateCallback);
+            Meteor.call('updateQuestion', text, points, options, questionId, this.insertUpdateCallback);
         } else {
-            Meteor.call('addQuestion', text, options, this.data.topicId, this.insertUpdateCallback);
+            Meteor.call('addQuestion', text, points, options, this.data.topicId, this.insertUpdateCallback);
         }
     },
 
@@ -77,12 +78,21 @@ EditQuestion = React.createClass({
                     <Input
                         type="text"
                         ref="text"
+                        label="Question"
                         placeholder="Type to add question text"
                         defaultValue={question.questionText}
                         />
                     <Input
+                        type="number"
+                        ref="points"
+                        label="Points"
+                        placeholder="Number of points"
+                        defaultValue={question.points}
+                        />
+                    <Input
                         type="textarea"
                         ref="options"
+                        label="Options"
                         placeholder="Type the different options on a new line"
                         defaultValue={options}
                         />
