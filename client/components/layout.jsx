@@ -1,12 +1,10 @@
 Layout = React.createClass({
-    //mixins: [ReactMeteorData],
-    //getMeteorData() {
-    //    return {
-    //        questions: Questions.find({}, {sort: {createdAt: -1}}).fetch(),
-    //        answers: Answers.find({}, {sort: {createdAt: -1}}).fetch(),
-    //        currentUser: Meteor.user()
-    //    };
-    //},
+    mixins: [ReactMeteorData],
+    getMeteorData() {
+       return {
+           currentUser: Meteor.user()
+       };
+    },
 
     render() {
         return <div>
