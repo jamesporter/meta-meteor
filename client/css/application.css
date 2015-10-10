@@ -1,4 +1,7 @@
-#login-buttons a {
-    color: #fff;
-    text-decoration: none;
+.nav.navbar-right > li > a {
+  padding: 0;
+}
+#at-nav-button {
+  background: none;
+  border: none;
 }
