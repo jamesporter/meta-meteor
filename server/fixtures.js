@@ -1,19 +1,19 @@
 Meteor.publish("topics", function () {
-    if (Meteor.user()) {
+    if (this.userId) {
         return Topics.find()
     } else {
         return {}
     }
 });
 Meteor.publish("questions", function () {
-    if (Meteor.user()) {
+    if (this.userId) {
         return Questions.find()
     } else {
         return {}
     }
 });
 Meteor.publish("responses", function () {
-    if (Meteor.user()) {
+    if (this.userId) {
         return Responses.find()
     } else {
         return {}
