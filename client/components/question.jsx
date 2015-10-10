@@ -25,7 +25,7 @@ Question = React.createClass({
 
                 <ButtonToolbar>
                     <Button>Mark</Button>
-                    <Button>Edit</Button>
+                    <Button href={"/topic/" + this.props.topic._id + "/question/" + this.props.question._id} >Edit</Button>
                     <Button>Delete</Button>
                 </ButtonToolbar>
 

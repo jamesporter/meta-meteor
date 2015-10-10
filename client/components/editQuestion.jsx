@@ -58,7 +58,7 @@ EditQuestion = React.createClass({
                         type="text"
                         ref="text"
                         placeholder="Type to add question text"
-                        value={question.questionText}
+                        defaultValue={question.questionText}
                         />
                     <Input
                         type="textarea"
@@ -68,7 +68,7 @@ EditQuestion = React.createClass({
                         />
                     <ButtonInput
                         type="submit"
-                        value={"Submit question"}
+                        value="Submit question"
                         />
                 </form>
             </div>

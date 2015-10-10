@@ -7,7 +7,8 @@ Topic = React.createClass({
     mixins: [ReactMeteorData],
     getMeteorData() {
         return {
-            topics: Topics.find({}, {sort: {createdAt: -1}}).fetch(),
+            user: Meteor.user(),
+            topic: Topics.findOne(this.props.topicId),
             questions: Questions.find({ topicId: this.props.topicId}, {sort: {points: -1}}).fetch()
         };
     },
@@ -17,7 +18,7 @@ Topic = React.createClass({
     renderQuestions(){
         return this.data.questions.map((question) => {
                 return (
-                    <Question key={question._id} question={question}/>
+                    <Question key={question._id} question={question} topic={this.data.topic} user={this.data.user}/>
                 )
             }
         );
