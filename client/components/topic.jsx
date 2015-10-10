@@ -1,9 +1,31 @@
 Topic = React.createClass({
+    mixins: [ReactMeteorData],
+    getMeteorData() {
+        return {
+            topics: Topics.find({}, {sort: {createdAt: -1}}).fetch(),
+            questions: Questions.find({ topicId: this.props.topicId}, {sort: {points: -1}}).fetch()
+        };
+    },
+
+
+
+    renderQuestions(){
+        return this.data.questions.map((question) => {
+                return (
+                    <Question />
+                )
+            }
+        );
+    },
     render(){
         return (
             <div className="container">
-                <AccountsUIWrapper />
-                <h1>List of questions for a particular topic</h1>
+                <div className="row">
+                    <div className="col-xs-12">
+                        <h1>List of questions for a particular topic</h1>
+                        {this.renderQuestions()}
+                    </div>
+                </div>
             </div>
         );
     }
