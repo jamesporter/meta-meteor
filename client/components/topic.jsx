@@ -12,7 +12,7 @@ Topic = React.createClass({
     renderQuestions(){
         return this.data.questions.map((question) => {
                 return (
-                    <Question />
+                    <Question key={question._id} question={question}/>
                 )
             }
         );
