@@ -1,22 +1,21 @@
-//Meteor.publish("questions", function () {
-//    if(Roles.userIsInRole(this.userId, ['teacher'])){
-//        return Questions.find({
-//            ownerId: this.userId
-//        })
-//    }
-//    else if (Roles.userIsInRole(this.userId, ['student'])){
-//        return Questions.find({});
-//    }
-//});
-//Meteor.publish("answers", function (recent) {
-//    if(Roles.userIsInRole(this.userId, ['teacher'])){
-//        return Answers.find({
-//            teacherId: this.userId
-//        })
-//    }
-//    else if (Roles.userIsInRole(this.userId, ['student'])){
-//        return Answers.find({
-//            ownerId: this.userId
-//        })
-//    }
-//});
+Meteor.publish("topics", function () {
+    if (Meteor.user()) {
+        return Topics.find()
+    } else {
+        return {}
+    }
+});
+Meteor.publish("questions", function () {
+    if (Meteor.user()) {
+        return Questions.find()
+    } else {
+        return {}
+    }
+});
+Meteor.publish("responses", function () {
+    if (Meteor.user()) {
+        return Responses.find()
+    } else {
+        return {}
+    }
+});
