@@ -9,7 +9,8 @@ Home = React.createClass({
     mixins: [ReactMeteorData],
     getMeteorData() {
         return {
-            topics: Topics.find({}, {sort: {createdAt: -1}}).fetch()
+            topics: Topics.find({}, {sort: {createdAt: -1}}).fetch(),
+            currentUser: Meteor.user()
         };
     },
     handleTopicAdd(event){
@@ -21,16 +22,15 @@ Home = React.createClass({
         }
     },
     renderTopics(){
-        console.log("Method getting called");
-        console.log(this.data.topics);
         return this.data.topics.map((topic) => {
-            console.log("Definitely getting called");
             return(
             <ListGroupItem
                 href={"/topic/" + topic._id}
                 key={topic._id}
                 header={<p><strong>{topic.title}</strong></p>}>
                 <p>{topic.description}</p>
+                <p className="small text-right text-muted">{topic.ownerId === this.data.currentUser._id ?
+                    "You" : topic.ownerName} added {moment(topic.createdAt).fromNow()}</p>
             </ListGroupItem>
             )
         })
