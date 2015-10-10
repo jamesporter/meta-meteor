@@ -23,16 +23,22 @@ Question = React.createClass({
     render(){
         return (
             <ListGroupItem>
-                <h2>{this.props.question.questionText}</h2>
+                <div className="row">
+                    <div className="col-md-6">
+                        <h2>{this.props.question.questionText + " (" + this.props.question.points + " points)"}</h2>
+                    </div>
+                    <div className="col-md-6">
 
-                { this.showOwnerOptions()?
-                <ButtonToolbar>
-                    <Button>Mark</Button>
-                    <Button href={"/topic/" + this.props.topic._id + "/question/" + this.props.question._id} >Edit</Button>
-                    <Button>Delete</Button>
-                </ButtonToolbar>
-                    :
-                    ""}
+                        { this.showOwnerOptions()?
+                        <ButtonToolbar>
+                            <Button>Mark</Button>
+                            <Button href={"/topic/" + this.props.topic._id + "/question/" + this.props.question._id} >Edit</Button>
+                            <Button>Delete</Button>
+                        </ButtonToolbar>
+                            :
+                            ""}
+                    </div>
+                </div>
 
                 <p>Please choose an option</p>
 
