@@ -1,6 +1,7 @@
 const {
     Input,
     ButtonInput,
+    Alert,
     } = rbs;
 
 EditQuestion = React.createClass({
@@ -30,19 +31,31 @@ EditQuestion = React.createClass({
         event.preventDefault();
         var text = this.refs.text.getInputDOMNode().value.trim();
         var options = this.refs.options.getInputDOMNode().value.trim();
-        var topicId = this.data.topicId;
         var questionId = this.data.questionId;
+
         if(questionId){
-            Meteor.call('updateQuestion', text, options, questionId);
+            Meteor.call('updateQuestion', text, options, questionId, this.insertUpdateCallback);
         } else {
-            Meteor.call('addQuestion', text, options, topicId);
+            Meteor.call('addQuestion', text, options, this.data.topicId, this.insertUpdateCallback);
         }
-        FlowRouter.go(`/topic/${topicId}`)
+    },
+
+    insertUpdateCallback(error, result) {
+        if(error) {
+            this.setState({error: error.error})
+        } else {
+            FlowRouter.go(`/topic/${this.data.topicId}`)
+        }
+    },
+
+    getInitialState() {
+        return {
+            error: null
+        }
     },
 
     render(){
         let question = this.data.question;
-        console.log(question);
         let options = question.options || [];
         options = options.join("\n")
 
@@ -52,6 +65,13 @@ EditQuestion = React.createClass({
                     this.isCreating() ?
                     <h1>Add question</h1> :
                     <h1>Edit question</h1>
+                }
+                {
+                    this.state.error ? 
+                        <Alert bsStyle="warning">
+                            <strong>Oh snap!</strong> {this.state.error}
+                        </Alert> : ''
+
                 }
                 <form onSubmit={this.handleCreateOrUpdate}>
                     <Input
