@@ -1,8 +1,6 @@
 Meteor.publish("topics", function () {
     if (this.userId) {
         return Topics.find()
-    } else {
-        this.ready()
     }
 });
 Meteor.publish("questions", function () {

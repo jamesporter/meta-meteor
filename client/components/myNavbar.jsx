@@ -13,7 +13,6 @@ MyNavbar = React.createClass({
     getMeteorData() {
        return {
          currentUser: Meteor.user()
-
        };
      },
     render(){
@@ -21,7 +20,7 @@ MyNavbar = React.createClass({
             return (
                 <Navbar brand={<a href="/">Meta</a>} inverse toggleNavKey={0}>
                     { this.data.currentUser ?
-                        this.data.currentUser.profile.name:
+                        this.data.currentUser.username:
                         'Link here'
                     }
 
