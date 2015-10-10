@@ -57,7 +57,7 @@ EditQuestion = React.createClass({
     render(){
         let question = this.data.question;
         let options = question.options || [];
-        options = options.join("\n")
+        options = options.join("\n");
 
         return (
             <div className="container">

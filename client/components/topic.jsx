@@ -9,16 +9,24 @@ Topic = React.createClass({
         return {
             user: Meteor.user(),
             topic: Topics.findOne(this.props.topicId),
-            questions: Questions.find({ topicId: this.props.topicId}, {sort: {points: -1}}).fetch()
+            questions: Questions.find({ topicId: this.props.topicId}, {sort: {points: -1}}).fetch(),
+            responses: Responses.find({ownerId: Meteor.userId(), topicId: this.props.topicId}).fetch()
         };
     },
-
-
-
+    findResponse(questionId){
+        return _.find(this.data.responses, function(response){
+            return response.questionId === questionId;
+        });
+    },
     renderQuestions(){
         return this.data.questions.map((question) => {
                 return (
-                    <Question key={question._id} question={question} topic={this.data.topic} user={this.data.user}/>
+                    <Question
+                        key={question._id}
+                        question={question}
+                        topic={this.data.topic}
+                        user={this.data.user}
+                        response={this.findResponse}/>
                 )
             }
         );

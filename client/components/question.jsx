@@ -12,11 +12,19 @@ Question = React.createClass({
     showOwnerOptions(){
         return this.props.topic.ownerId == this.props.user._id;
     },
+    handleResponse(option){
+        //event.preventDefault();
+        Meteor.call('addResponse', this.props.question._id, this.props.topic._id, option)
+    },
     renderOptions(){
-        return this.props.question.options.map( opt => {
+        var i = 0;
+        return this.props.question.options.map((opt, index) => {
             return(
-
-              <Button>{opt}</Button>
+              <Button
+                  key={index}
+                  onClick={()=> {this.handleResponse(opt); }}>
+                  {opt}
+              </Button>
             );
         })
     },
@@ -40,11 +48,15 @@ Question = React.createClass({
                     </div>
                 </div>
 
-                <p>Please choose an option</p>
+                {this.props.response ?
+                    <p>You chose: {this.props.response.option}</p> :
+                <p>Please choose an option</p>}
 
-                <ButtonGroup vertical>
-                    {this.renderOptions()}
-                </ButtonGroup>
+                {this.props.response ? "" :
+                    <ButtonGroup vertical>
+                        {this.renderOptions()}
+                    </ButtonGroup>}
+
             </ListGroupItem>
         );
     }
