@@ -29,7 +29,7 @@ Home = React.createClass({
             <ListGroupItem
                 href={"/topic/" + topic._id}
                 key={topic._id}
-                header={<p>{topic.title}</p>}>
+                header={<p><strong>{topic.title}</strong></p>}>
                 <p>{topic.description}</p>
             </ListGroupItem>
             )
@@ -38,7 +38,6 @@ Home = React.createClass({
     render(){
         return (
             <div className="container">
-                <AccountsUIWrapper />
                 <div className="row">
                     <div className="col-xs-12">
                         <form onSubmit={this.handleTopicAdd}>
