@@ -1,7 +1,9 @@
 const {
     Button,
     ListGroup,
-    ButtonToolbar
+    ButtonToolbar,
+    Nav,
+    NavItem
     } = rbs;
 
 Topic = React.createClass({
@@ -55,17 +57,49 @@ Topic = React.createClass({
       return s.indexOf(" ") >= 0;
     },
 
+    renderQuestionTab() {
+        return (
+            <div>
+                {this.renderAddQuestion()}
+                <ListGroup>
+                    {this.renderQuestions()}
+                </ListGroup>
+            </div>
+        )
+    },
+
+    renderLeaderboard() {
+        return (<h1>Leaderboard</h1>);
+    },
+
+    getInitialState() {
+        return {
+            selectedTab: "Questions"
+        }
+    },
+
+    handleSelect(tabName) {
+        this.setState({selectedTab: tabName})
+    },
+
     render() {
+        let selectedTab = this.state.selectedTab;
         return (
             <div className="container">
                 <div className="row">
                     <div className="col-xs-12">
                         <h1>Questions for <strong>{this.data.topic.title}</strong></h1> 
                         <h2><a href={"https://twitter.com/search?q=%23"+this.determineHashtag()}>#{this.determineHashtag()}</a></h2>
-                        { this.renderAddQuestion() }
-                        <ListGroup>
-                            {this.renderQuestions()}
-                        </ListGroup>
+                        <Nav activeKey={selectedTab} bsStyle="tabs" onSelect={this.handleSelect}>
+                            <NavItem eventKey={"Questions"}>Questions</NavItem>
+                            <NavItem eventKey={"Leaderboard"}>Leaderboard</NavItem>
+                        </Nav>
+                        { 
+                            (selectedTab == "Questions") ?
+                                this.renderQuestionTab()
+                                :
+                                this.renderLeaderboard()
+                        }
                     </div>
                 </div>
             </div>
