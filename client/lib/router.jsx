@@ -42,7 +42,7 @@ loggedIn.route('/topic/:topicId/question', {
     }
 });
 loggedIn.route('/topic/:topicId/question/:questionId', {
-    action: function() {
+    action: function(params) {
         ReactLayout.render(Layout, {
             content: <EditQuestion {...params}/>
         });
