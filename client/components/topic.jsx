@@ -1,6 +1,7 @@
 const {
     Button,
-    ListGroup
+    ListGroup,
+    ButtonToolbar
     } = rbs;
 
 Topic = React.createClass({
@@ -29,7 +30,9 @@ Topic = React.createClass({
                 <div className="row">
                     <div className="col-xs-12">
                         <h1>{this.data.topic.title}</h1>
-                        <Button bsStyle="primary" href={"/topic/" + this.props.topicId + "/question"}>Add question</Button>
+                        <ButtonToolbar>
+                            <Button bsStyle="primary" href={"/topic/" + this.props.topicId + "/question"}>Add question</Button>
+                        </ButtonToolbar>
                         <ListGroup>
                             {this.renderQuestions()}
                         </ListGroup>
