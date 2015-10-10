@@ -1,3 +1,5 @@
+const {Button} = rbs;
+
 Topic = React.createClass({
     mixins: [ReactMeteorData],
     getMeteorData() {
@@ -23,6 +25,7 @@ Topic = React.createClass({
                 <div className="row">
                     <div className="col-xs-12">
                         <h1>List of questions for a particular topic</h1>
+                        <Button bsStyle="primary" href="/topic/{this.props.topicId}/question">Add</Button>
                         {this.renderQuestions()}
                     </div>
                 </div>
