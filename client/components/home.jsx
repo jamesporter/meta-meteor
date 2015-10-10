@@ -53,7 +53,7 @@ Home = React.createClass({
                                 />
                             <ButtonInput
                                 type="submit"
-                                value={"Submit topic"}
+                                value={"Add topic"}
                                 />
                         </form>
                         <ListGroup>

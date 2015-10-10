@@ -1,4 +1,7 @@
-const {Button} = rbs;
+const {
+    Button,
+    ListGroup
+    } = rbs;
 
 Topic = React.createClass({
     mixins: [ReactMeteorData],
@@ -25,8 +28,10 @@ Topic = React.createClass({
                 <div className="row">
                     <div className="col-xs-12">
                         <h1>List of questions for a particular topic</h1>
-                        <Button bsStyle="primary" href="/topic/{this.props.topicId}/question">Add</Button>
-                        {this.renderQuestions()}
+                        <Button bsStyle="primary" href={"/topic/" + this.props.topicId + "/question"}>Add question</Button>
+                        <ListGroup>
+                            {this.renderQuestions()}
+                        </ListGroup>
                     </div>
                 </div>
             </div>
