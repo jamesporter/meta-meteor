@@ -17,8 +17,13 @@ MyNavbar = React.createClass({
      },
     render(){
         return (
-            <Navbar brand={<a href="/">Meta</a>} inverse toggleNavKey={0}>
-                <LoginUIWrapper />
+            <Navbar brand={<a href="/">Meta</a>} inverse>
+                { this.data.currentUser ?
+                    <Nav right>
+                        <NavItem href="/logout">Logout</NavItem>
+                    </Nav>
+                    :""
+                }
             </Navbar>)
     }
 });
