@@ -61,8 +61,7 @@ Question = React.createClass({
                     <div className="col-md-6">
 
                         { this.showOwnerOptions()?
-                        <ButtonToolbar>
-                            <Button>Mark</Button>
+                        <ButtonToolbar className="pull-right">
                             <Button href={"/topic/" + this.props.topic._id + "/question/" + this.props.question._id} >Edit</Button>
                             <Button onClick={()=> {this.handleDelete(this.props.question._id); }}>Delete</Button>
                         </ButtonToolbar>
