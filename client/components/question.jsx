@@ -104,13 +104,13 @@ Question = React.createClass({
                     "":
                     <ButtonGroup vertical>
                         {this.renderOptions()}
-                    </ButtonGroup>}
+                    </ButtonGroup>
+                }
 
                 <div className="mini-insta" style={{position:'absolute', right:'10px', top: '10px'}} id={"avatar-"+this.props.question._id}></div>
-                
+
                 <p className="small text-right text-muted">{this.props.question.ownerId === this.props.user._id ?
                         "You" : this.props.question.ownerName} asked {moment(this.props.question.createdAt).fromNow()}</p>
-                }
                 </div>
 
 
