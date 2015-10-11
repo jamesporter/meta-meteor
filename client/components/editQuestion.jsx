@@ -99,6 +99,7 @@ EditQuestion = React.createClass({
                     <ButtonInput
                         type="submit"
                         value="Submit question"
+                        bsStyle="btn-info"
                         />
                 </form>
             </div>
