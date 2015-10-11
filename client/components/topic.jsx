@@ -75,7 +75,7 @@ Topic = React.createClass({
             get: "tagged",
             tagName: determineHashtag(this.data.topic.title),
             clientId: "99168047378c46e4b7daf7f3ae9eda47",
-            sortBy: 'most-commented',
+            sortBy: 'most-liked',
         });
         feed.run();
 
