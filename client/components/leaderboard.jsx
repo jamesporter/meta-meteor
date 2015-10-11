@@ -7,7 +7,7 @@ Leaderboard = React.createClass({
     mixins: [ReactMeteorData],
     getMeteorData() {
         return {
-            awards: Awards.find({topicId: this.props.topic._id}, {sort: {createdAt: -1}}).fetch()
+            awards: Awards.find({topicId: this.props.topic._id}).fetch()
         };
     },
     renderUsers(){
