@@ -36,7 +36,7 @@ Home = React.createClass({
                     <p>Choose an event to start playing</p>
                     <div className="col-xs-12">
                         <div className="floating">
-                            <Button bsStyle="btn-danger btn-floating" href={"/topic"}>+</Button>
+                            <Button bsStyle="btn-info btn-floating" href={"/topic"}>+</Button>
                         </div>
                         <ListGroup>
                         {this.renderTopics()}

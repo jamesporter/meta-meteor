@@ -40,7 +40,7 @@ Topic = React.createClass({
         if (this.data.topic.ownerId == Meteor.userId()) {
             return (
                 <div className="floating">
-                    <Button bsStyle="btn-danger btn-floating" href={"/topic/" + this.props.topicId + "/question"}>+</Button>
+                    <Button bsStyle="btn-info btn-floating" href={"/topic/" + this.props.topicId + "/question"}>+</Button>
                 </div>
             )
         }
