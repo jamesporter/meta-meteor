@@ -109,7 +109,7 @@ Question = React.createClass({
                 }
                 <div>
 
-                    <div className="mini-insta" style={{position:'absolute', right:'10px', top: '10px'}} id={"avatar-"+this.props.question._id}></div>
+                    <div className="mini-insta" style={{position:'absolute', right:'15px', top: '70px'}} id={"avatar-"+this.props.question._id}></div>
 
                     <p className="small text-right text-muted">{this.props.question.ownerId === this.props.user._id ?
                         "You" : this.props.question.ownerName} asked {moment(this.props.question.createdAt).fromNow()}</p>
