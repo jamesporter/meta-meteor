@@ -68,9 +68,6 @@ Topic = React.createClass({
         )
     },
 
-    renderLeaderboard() {
-        return (<h1>Leaderboard</h1>);
-    },
 
     getInitialState() {
         return {
@@ -98,7 +95,7 @@ Topic = React.createClass({
                             (selectedTab == "Questions") ?
                                 this.renderQuestionTab()
                                 :
-                                this.renderLeaderboard()
+                                <Leaderboard />
                         }
                     </div>
                 </div>
