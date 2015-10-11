@@ -1,6 +1,7 @@
 const {
     Input,
     ButtonInput,
+    Button,
     ListGroup,
     ListGroupItem
     } = rbs;
@@ -12,14 +13,6 @@ Home = React.createClass({
             topics: Topics.find({}, {sort: {createdAt: -1}}).fetch(),
             currentUser: Meteor.user()
         };
-    },
-    handleTopicAdd(event){
-        event.preventDefault();
-        var title = this.refs.topicTitle.getInputDOMNode().value.trim();
-        var description = this.refs.topicDescription.getInputDOMNode().value.trim();
-        if(title!==""){
-            Meteor.call('addTopic', title, description);
-        }
     },
     renderTopics(){
         return this.data.topics.map((topic) => {
@@ -39,23 +32,12 @@ Home = React.createClass({
         return (
             <div className="container">
                 <div className="row">
+                    <h2>Events</h2>
+                    <p>Choose an event to start playing</p>
                     <div className="col-xs-12">
-                        <form onSubmit={this.handleTopicAdd}>
-                            <Input
-                                type="text"
-                                ref="topicTitle"
-                                placeholder={"Type to add topic title"}
-                                />
-                            <Input
-                                type="textarea"
-                                ref="topicDescription"
-                                placeholder={"Type to add topic description"}
-                                />
-                            <ButtonInput
-                                type="submit"
-                                value={"Add topic"}
-                                />
-                        </form>
+                        <div className="floating">
+                            <Button bsStyle="btn-danger btn-floating" href={"/topic"}>+</Button>
+                        </div>
                         <ListGroup>
                         {this.renderTopics()}
                         </ListGroup>
