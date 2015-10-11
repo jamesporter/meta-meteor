@@ -17,6 +17,9 @@ Question = React.createClass({
         //event.preventDefault();
         Meteor.call('addResponse', this.props.question._id, this.props.topic._id, option)
     },
+    handleDelete(questionId){
+        Meteor.call('removeQuestion', questionId)
+    },
     renderOptions(){
         return this.props.question.options.map((opt, index) => {
             console.log("renderOptions is called");
@@ -42,7 +45,7 @@ Question = React.createClass({
                         <ButtonToolbar>
                             <Button>Mark</Button>
                             <Button href={"/topic/" + this.props.topic._id + "/question/" + this.props.question._id} >Edit</Button>
-                            <Button>Delete</Button>
+                            <Button onClick={()=> {this.handleDelete(this.props.question._id); }}>Delete</Button>
                         </ButtonToolbar>
                             :
                             ""}
@@ -57,6 +60,8 @@ Question = React.createClass({
                     <ButtonGroup vertical>
                         {this.renderOptions()}
                     </ButtonGroup>}
+                <p className="small text-right text-muted">{this.props.question.ownerId === this.props.user._id ?
+                    "You" : this.props.question.ownerName} asked {moment(this.props.question.createdAt).fromNow()}</p>
 
             </ListGroupItem>
         );
