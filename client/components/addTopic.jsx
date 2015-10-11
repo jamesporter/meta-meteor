@@ -58,6 +58,7 @@ AddTopic = React.createClass({
                     <ButtonInput
                         type="submit"
                         value={"Add topic"}
+                        bsStyle="btn-info"
                         />
                 </form>
             </div> )

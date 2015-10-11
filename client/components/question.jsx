@@ -32,7 +32,7 @@ Question = React.createClass({
         return this.props.question.options.map((opt, index) => {
             console.log("renderOptions is called");
             return(
-              <Button
+              <Button bsStyle="btn-info"
                   key={index}
                   onClick={()=> {this.handleResponse(opt); }}>
                   {opt}
@@ -43,7 +43,7 @@ Question = React.createClass({
     renderMarkOptions(){
         return this.props.question.options.map((opt, index) => {
             return(
-                <Button
+                <Button bsStyle="btn-primary"
                     key={index}
                     onClick={()=> {this.handleMark(opt); }}>
                     {opt}
@@ -52,6 +52,17 @@ Question = React.createClass({
         })
     },
     render(){
+
+        var feed = new Instafeed({
+            get: "tagged",
+            tagName: determineHashtag(this.props.question.questionText),
+            clientId: "99168047378c46e4b7daf7f3ae9eda47",
+            sortBy: 'most-commented',
+            limit: '1',
+            target: 'avatar-'+this.props.question._id,
+        });
+        feed.run();
+
         return (
             <ListGroupItem>
                 <div className="row">
@@ -60,10 +71,10 @@ Question = React.createClass({
                     </div>
                     <div className="col-md-6">
 
-                        { this.showOwnerOptions()?
+                        { this.showOwnerOptions() && !this.showAnswer()?
                         <ButtonToolbar className="pull-right">
-                            <Button href={"/topic/" + this.props.topic._id + "/question/" + this.props.question._id} >Edit</Button>
-                            <Button onClick={()=> {this.handleDelete(this.props.question._id); }}>Delete</Button>
+                            <Button bsStyle="btn-info" href={"/topic/" + this.props.topic._id + "/question/" + this.props.question._id} >Edit</Button>
+                            <Button bsStyle="btn-danger" onClick={()=> {this.handleDelete(this.props.question._id); }}>Delete</Button>
                         </ButtonToolbar>
                             :
                             ""}
@@ -90,16 +101,26 @@ Question = React.createClass({
                 {
                     this.props.response ?
                     "":
-                    <ButtonGroup vertical>
-                        {this.renderOptions()}
-                    </ButtonGroup>}
+
+
+                        <ButtonGroup vertical>
+                            {this.renderOptions()}
+                        </ButtonGroup>
+                }
+                <div>
+
+                    <div className="mini-insta" style={{position:'absolute', right:'15px', top: '70px'}} id={"avatar-"+this.props.question._id}></div>
+
                     <p className="small text-right text-muted">{this.props.question.ownerId === this.props.user._id ?
                         "You" : this.props.question.ownerName} asked {moment(this.props.question.createdAt).fromNow()}</p>
-                }
                 </div>
 
+
+                </div>
+
+
                 <div>
-                { this.showOwnerOptions() ?
+                { this.showOwnerOptions() && !this.showAnswer()?
                     <div>
                         <h2>Mark</h2>
                         <ButtonGroup vertical>
