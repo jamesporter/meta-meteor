@@ -92,14 +92,14 @@ Question = React.createClass({
                 }
 
                 {
-                    this.props.response ?
+                    (this.props.response || this.showAnswer()) ?
                     <p>You chose: {this.props.response.option}</p> :
                     <p>Please choose an option</p>
                 }
 
                 <div>
                 {
-                    this.props.response ?
+                    (this.props.response || this.showAnswer()) ?
                     "":
 
 
