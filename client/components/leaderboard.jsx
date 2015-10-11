@@ -23,7 +23,7 @@ Leaderboard = React.createClass({
             });
             var score = 0;
             for (var i = 0; i < userAwards.length; i++) {
-                score += userAwards.points;
+                score += userAwards[i].points;
             }
             console.log(user.id, score)
             return (
