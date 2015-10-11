@@ -29,7 +29,7 @@ Leaderboard = React.createClass({
             return (
                 <ListGroupItem
                     key={user.id}
-                    header={<p><strong>{user.id}</strong></p>}>
+                    header={<p><strong>{user.username}</strong></p>}>
                     <p>{score}</p>
                 </ListGroupItem>
             );
