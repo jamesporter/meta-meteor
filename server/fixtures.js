@@ -17,3 +17,10 @@ Meteor.publish("responses", function () {
         this.ready()
     }
 });
+Meteor.publish("awards", function () {
+    if (this.userId) {
+        return Awards.find()
+    } else {
+        this.ready()
+    }
+});
