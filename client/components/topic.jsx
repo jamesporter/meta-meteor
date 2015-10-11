@@ -146,6 +146,7 @@ Topic = React.createClass({
                                 :
                                 <Leaderboard />
                         }
+                        <h2>From the Instawebs on #{this.determineHashtag()}</h2>
                         <div id="instafeed"></div>
                     </div>
                 </div>
