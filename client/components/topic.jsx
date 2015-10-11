@@ -39,9 +39,9 @@ Topic = React.createClass({
         console.log(this.data.topic.ownerId, Meteor.userId(), this.data.topic.ownerId == Meteor.userId())
         if (this.data.topic.ownerId == Meteor.userId()) {
             return (
-                <ButtonToolbar>
-                    <Button bsStyle="primary" href={"/topic/" + this.props.topicId + "/question"}>Add question</Button>
-                </ButtonToolbar>
+                <div className="floating">
+                    <Button bsStyle="btn-danger btn-floating" href={"/topic/" + this.props.topicId + "/question"}>+</Button>
+                </div>
             )
         }
     },
@@ -90,10 +90,6 @@ Topic = React.createClass({
                         <h2><a href={"https://twitter.com/search?q=%23"+determineHashtag(this.data.topic.title)}>#{determineHashtag(this.data.topic.title)}</a></h2>
 
                         { this.renderAddQuestion() }
-                        <ListGroup>
-                            {this.renderQuestions()}
-                        </ListGroup>
-
                         <Nav activeKey={selectedTab} bsStyle="tabs" onSelect={this.handleSelect}>
                             <NavItem eventKey={"Questions"}>Questions</NavItem>
                             <NavItem eventKey={"Leaderboard"}>Leaderboard</NavItem>

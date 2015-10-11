@@ -12,10 +12,18 @@ Question = React.createClass({
     showOwnerOptions(){
         return this.props.topic.ownerId == this.props.user._id;
     },
+    showAnswer(){
+        return this.props.question.marked;
+    },
     handleResponse(option){
         console.log(option, this.props.question._id);
         //event.preventDefault();
         Meteor.call('addResponse', this.props.question._id, this.props.topic._id, option)
+    },
+    handleMark(option){
+        console.log(option, this.props.question._id);
+        //event.preventDefault();
+        Meteor.call('markQuestion', this.props.question._id, option)
     },
     handleDelete(questionId){
         Meteor.call('removeQuestion', questionId)
@@ -29,6 +37,17 @@ Question = React.createClass({
                   onClick={()=> {this.handleResponse(opt); }}>
                   {opt}
               </Button>
+            );
+        })
+    },
+    renderMarkOptions(){
+        return this.props.question.options.map((opt, index) => {
+            return(
+                <Button
+                    key={index}
+                    onClick={()=> {this.handleMark(opt); }}>
+                    {opt}
+                </Button>
             );
         })
     },
@@ -63,18 +82,49 @@ Question = React.createClass({
                     </div>
                 </div>
 
-                {this.props.response ?
-                    <p>You chose: {this.props.response.option}</p> :
-                <p>Please choose an option</p>}
 
-                {this.props.response ? "" :
+                {
+                    this.showAnswer() ?
+                    <div>
+                        <p>The answer is:</p>
+                        <p>{this.props.question.answer}</p>
+                    </div>:
+                    ""
+                }
+
+                {
+                    this.props.response ?
+                    <p>You chose: {this.props.response.option}</p> :
+                    <p>Please choose an option</p>
+                }
+
+                <div>
+                {
+                    this.props.response ?
+                    "":
                     <ButtonGroup vertical>
                         {this.renderOptions()}
                     </ButtonGroup>}
-                <div className="mini-insta" style={{position:'absolute', right:'10px', top: '10px'}} id={"avatar-"+this.props.question._id}></div>
-                <p className="small text-right text-muted">{this.props.question.ownerId === this.props.user._id ?
-                    "You" : this.props.question.ownerName} asked {moment(this.props.question.createdAt).fromNow()}</p>
 
+                <div className="mini-insta" style={{position:'absolute', right:'10px', top: '10px'}} id={"avatar-"+this.props.question._id}></div>
+                
+                <p className="small text-right text-muted">{this.props.question.ownerId === this.props.user._id ?
+                        "You" : this.props.question.ownerName} asked {moment(this.props.question.createdAt).fromNow()}</p>
+                }
+                </div>
+
+
+                <div>
+                { this.showOwnerOptions() ?
+                    <div>
+                        <h2>Mark</h2>
+                        <ButtonGroup vertical>
+                            {this.renderMarkOptions()}
+                        </ButtonGroup>
+                    </div>:
+                    ""
+                }
+                </div>
             </ListGroupItem>
         );
     }
