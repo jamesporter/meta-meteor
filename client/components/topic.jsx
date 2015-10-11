@@ -142,11 +142,17 @@ Topic = React.createClass({
                                 :
                                 <Leaderboard />
                         }
+
+                    </div>
+                    <div className="col-xs-12 well" style={this.footerStyle}>
                         <h2>From the Instawebs on #{this.determineHashtag()}</h2>
                         <div id="instafeed"></div>
                     </div>
                 </div>
             </div>
         );
+    },
+    footerStyle: {
+        marginTop:"120px"
     }
 });
