@@ -27,6 +27,13 @@ loggedIn.route('/', {
         });
     }
 });
+loggedIn.route('/topic/', {
+    action: function(params) {
+        ReactLayout.render(Layout, {
+            content: <AddTopic {...params}/>
+        });
+    }
+});
 loggedIn.route('/topic/:topicId', {
     action: function(params) {
         ReactLayout.render(Layout, {
