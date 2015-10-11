@@ -71,7 +71,7 @@ Question = React.createClass({
                     </div>
                     <div className="col-md-6">
 
-                        { this.showOwnerOptions()?
+                        { this.showOwnerOptions() && !this.showAnswer()?
                         <ButtonToolbar className="pull-right">
                             <Button bsStyle="btn-info" href={"/topic/" + this.props.topic._id + "/question/" + this.props.question._id} >Edit</Button>
                             <Button bsStyle="btn-danger" onClick={()=> {this.handleDelete(this.props.question._id); }}>Delete</Button>
@@ -120,7 +120,7 @@ Question = React.createClass({
 
 
                 <div>
-                { this.showOwnerOptions() ?
+                { this.showOwnerOptions() && !this.showAnswer()?
                     <div>
                         <h2>Mark</h2>
                         <ButtonGroup vertical>
