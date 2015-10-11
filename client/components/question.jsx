@@ -57,7 +57,7 @@ Question = React.createClass({
             get: "tagged",
             tagName: determineHashtag(this.props.question.questionText),
             clientId: "99168047378c46e4b7daf7f3ae9eda47",
-            sortBy: 'most-commented',
+            sortBy: 'most-liked',
             limit: '1',
             target: 'avatar-'+this.props.question._id,
         });
