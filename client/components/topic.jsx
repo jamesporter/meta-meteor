@@ -132,10 +132,6 @@ Topic = React.createClass({
                         <h2><a href={"https://twitter.com/search?q=%23"+this.determineHashtag()}>#{this.determineHashtag()}</a></h2>
 
                         { this.renderAddQuestion() }
-                        <ListGroup>
-                            {this.renderQuestions()}
-                        </ListGroup>
-
                         <Nav activeKey={selectedTab} bsStyle="tabs" onSelect={this.handleSelect}>
                             <NavItem eventKey={"Questions"}>Questions</NavItem>
                             <NavItem eventKey={"Leaderboard"}>Leaderboard</NavItem>
