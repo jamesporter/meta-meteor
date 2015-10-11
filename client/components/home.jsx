@@ -39,7 +39,17 @@ Home = React.createClass({
         return (
             <div className="container">
                 <div className="row">
-                    <div className="col-xs-12">
+                    <div className="col-sm-8">
+                        <h2>Events</h2>
+                        <p>Choose an event to start playing</p>
+                        <ListGroup>
+                            {this.renderTopics()}
+                        </ListGroup>
+                    </div>
+
+                    <div className="col-sm-4 well">
+                        <h2>Add Event</h2>
+
                         <form onSubmit={this.handleTopicAdd}>
                             <Input
                                 type="text"
@@ -56,10 +66,8 @@ Home = React.createClass({
                                 value={"Add topic"}
                                 />
                         </form>
-                        <ListGroup>
-                        {this.renderTopics()}
-                        </ListGroup>
                     </div>
+
                 </div>
             </div>
         );
