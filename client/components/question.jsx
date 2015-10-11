@@ -32,7 +32,7 @@ Question = React.createClass({
         return this.props.question.options.map((opt, index) => {
             console.log("renderOptions is called");
             return(
-              <Button
+              <Button bsStyle="btn-info"
                   key={index}
                   onClick={()=> {this.handleResponse(opt); }}>
                   {opt}
@@ -43,7 +43,7 @@ Question = React.createClass({
     renderMarkOptions(){
         return this.props.question.options.map((opt, index) => {
             return(
-                <Button
+                <Button bsStyle="btn-primary"
                     key={index}
                     onClick={()=> {this.handleMark(opt); }}>
                     {opt}
@@ -90,12 +90,16 @@ Question = React.createClass({
                 {
                     this.props.response ?
                     "":
-                    <ButtonGroup vertical>
-                        {this.renderOptions()}
-                    </ButtonGroup>}
+
+                        <ButtonGroup vertical>
+                            {this.renderOptions()}
+                        </ButtonGroup>
+                }
+                <div>
                     <p className="small text-right text-muted">{this.props.question.ownerId === this.props.user._id ?
                         "You" : this.props.question.ownerName} asked {moment(this.props.question.createdAt).fromNow()}</p>
-                }
+                </div>
+
                 </div>
 
                 <div>
