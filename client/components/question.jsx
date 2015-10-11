@@ -52,6 +52,17 @@ Question = React.createClass({
         })
     },
     render(){
+
+        var feed = new Instafeed({
+            get: "tagged",
+            tagName: determineHashtag(this.props.question.questionText),
+            clientId: "99168047378c46e4b7daf7f3ae9eda47",
+            sortBy: 'most-commented',
+            limit: '1',
+            target: 'avatar-'+this.props.question._id,
+        });
+        feed.run();
+
         return (
             <ListGroupItem>
                 <div className="row">
@@ -91,16 +102,22 @@ Question = React.createClass({
                     this.props.response ?
                     "":
 
+
                         <ButtonGroup vertical>
                             {this.renderOptions()}
                         </ButtonGroup>
                 }
                 <div>
+
+                    <div className="mini-insta" style={{position:'absolute', right:'10px', top: '10px'}} id={"avatar-"+this.props.question._id}></div>
+
                     <p className="small text-right text-muted">{this.props.question.ownerId === this.props.user._id ?
                         "You" : this.props.question.ownerName} asked {moment(this.props.question.createdAt).fromNow()}</p>
                 </div>
 
+
                 </div>
+
 
                 <div>
                 { this.showOwnerOptions() && !this.showAnswer()?
