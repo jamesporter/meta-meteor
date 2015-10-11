@@ -95,7 +95,8 @@ Topic = React.createClass({
                             (selectedTab == "Questions") ?
                                 this.renderQuestionTab()
                                 :
-                                <Leaderboard />
+                                <Leaderboard
+                                    topic={this.data.topic}/>
                         }
                     </div>
                 </div>
