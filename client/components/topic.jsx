@@ -44,12 +44,24 @@ Topic = React.createClass({
         }
     },
 
+    determineHashtag() {
+        //determine what is the topic about
+        console.log(this.data.topic.title);
+        return "hashtag";
+
+    },
+
+    hasWhiteSpace(s) {
+      return s.indexOf(" ") >= 0;
+    },
+
     render() {
         return (
             <div className="container">
                 <div className="row">
                     <div className="col-xs-12">
-                        <h1>{this.data.topic.title}</h1> 
+                        <h1>Questions for <strong>{this.data.topic.title}</strong></h1> 
+                        <h2><a href={"https://twitter.com/search?q=%23"+this.determineHashtag()}>#{this.determineHashtag()}</a></h2>
                         { this.renderAddQuestion() }
                         <ListGroup>
                             {this.renderQuestions()}
