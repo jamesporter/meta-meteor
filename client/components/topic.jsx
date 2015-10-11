@@ -40,7 +40,7 @@ Topic = React.createClass({
         if (this.data.topic.ownerId == Meteor.userId()) {
             return (
                 <div className="floating">
-                    <Button bsStyle="btn-danger btn-floating" href={"/topic/" + this.props.topicId + "/question"}>+</Button>
+                    <Button bsStyle="btn-info btn-floating" href={"/topic/" + this.props.topicId + "/question"}>+</Button>
                 </div>
             )
         }
@@ -100,11 +100,19 @@ Topic = React.createClass({
                                 :
                                 <Leaderboard />
                         }
+
+
+                    </div>
+                    <div className="col-xs-12 well" style={this.footerStyle}>
                         <h2>From the Instawebs on #{determineHashtag(this.data.topic.title)}</h2>
+
                         <div id="instafeed"></div>
                     </div>
                 </div>
             </div>
         );
+    },
+    footerStyle: {
+        marginTop:"120px"
     }
 });

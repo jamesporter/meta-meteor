@@ -32,7 +32,7 @@ Question = React.createClass({
         return this.props.question.options.map((opt, index) => {
             console.log("renderOptions is called");
             return(
-              <Button
+              <Button bsStyle="btn-info"
                   key={index}
                   onClick={()=> {this.handleResponse(opt); }}>
                   {opt}
@@ -43,7 +43,7 @@ Question = React.createClass({
     renderMarkOptions(){
         return this.props.question.options.map((opt, index) => {
             return(
-                <Button
+                <Button bsStyle="btn-primary"
                     key={index}
                     onClick={()=> {this.handleMark(opt); }}>
                     {opt}
@@ -72,10 +72,9 @@ Question = React.createClass({
                     <div className="col-md-6">
 
                         { this.showOwnerOptions()?
-                        <ButtonToolbar>
-                            <Button>Mark</Button>
-                            <Button href={"/topic/" + this.props.topic._id + "/question/" + this.props.question._id} >Edit</Button>
-                            <Button onClick={()=> {this.handleDelete(this.props.question._id); }}>Delete</Button>
+                        <ButtonToolbar className="pull-right">
+                            <Button bsStyle="btn-info" href={"/topic/" + this.props.topic._id + "/question/" + this.props.question._id} >Edit</Button>
+                            <Button bsStyle="btn-danger" onClick={()=> {this.handleDelete(this.props.question._id); }}>Delete</Button>
                         </ButtonToolbar>
                             :
                             ""}
@@ -102,15 +101,21 @@ Question = React.createClass({
                 {
                     this.props.response ?
                     "":
-                    <ButtonGroup vertical>
-                        {this.renderOptions()}
-                    </ButtonGroup>
+
+
+                        <ButtonGroup vertical>
+                            {this.renderOptions()}
+                        </ButtonGroup>
                 }
+                <div>
 
-                <div className="mini-insta" style={{position:'absolute', right:'10px', top: '10px'}} id={"avatar-"+this.props.question._id}></div>
+                    <div className="mini-insta" style={{position:'absolute', right:'10px', top: '10px'}} id={"avatar-"+this.props.question._id}></div>
 
-                <p className="small text-right text-muted">{this.props.question.ownerId === this.props.user._id ?
+                    <p className="small text-right text-muted">{this.props.question.ownerId === this.props.user._id ?
                         "You" : this.props.question.ownerName} asked {moment(this.props.question.createdAt).fromNow()}</p>
+                </div>
+
+
                 </div>
 
 
